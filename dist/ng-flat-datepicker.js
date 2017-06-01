@@ -29,6 +29,7 @@
                     allowFuture: true,
                     dateFormat: null,
                     minDate: null,
+                    minYear: null,
                     maxDate: null
                 };
 
@@ -42,7 +43,7 @@
                 scope.currentWeeks    = [];
                 scope.daysNameList    = datesCalculator.getDaysNames();
                 scope.monthsList      = moment.months();
-                scope.yearsList       = datesCalculator.getYearsList();
+                scope.yearsList       = datesCalculator.getYearsList(defaultConfig.minYear);
 
                 // Display
                 scope.pickerDisplayed = false;
@@ -226,9 +227,9 @@
          * List all years for the select
          * @return {[type]} [description]
          */
-        function getYearsList() {
+        function getYearsList(minYear) {
             var yearsList = [];
-            for (var i = 2005; i <= moment().year(); i++) {
+            for (var i = minYear; i <= moment().year(); i++) {
                 yearsList.push(i);
             }
             return yearsList;
